@@ -44,10 +44,6 @@ Responsabilidades:
 - recoger notas sueltas
 - canalizar materiales a `atenea`
 
-### `atenea-platform`
-
-Gobierno tecnico y arquitectura.
-
 ## Regla principal
 
 `radar-os` debe funcionar como capa de entrada y observacion, no como memoria consolidada.
