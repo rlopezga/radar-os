@@ -1,0 +1,11 @@
+{
+  "name": "radar-os",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "radar-os_youtube_transcriber": "node scripts/radar-os_youtube_transcriber.mjs",
+    "radar-os_video_summarizer": "node scripts/radar-os_video_summarizer.mjs",
+    "radar-os_youtube_pipeline": "node scripts/radar-os_youtube_pipeline.mjs"
+  }
+}
