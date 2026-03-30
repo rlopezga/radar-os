@@ -11,12 +11,14 @@ import {
   extractYouTubeVideoId,
   formatTimestamp,
   isoDateString,
+  normalizeBoolean,
   normalizeSphere,
   parseCliArgs,
   requireArg,
   slugify,
   writeTextFile
 } from "./lib/common.mjs";
+import { runTranscriptPostprocess } from "./lib/radar-os_postprocess.mjs";
 
 const execFileAsync = promisify(execFile);
 const DEFAULT_WHISPERKIT_MODEL = "large-v3-turbo";
@@ -202,6 +204,9 @@ export async function runWhisperKitTranscriber(cliArgs = process.argv.slice(2)) 
   const url = requireArg(args, "url", `Usage: --url <youtube-url> [--sphere personal|work] [--lang auto|en|es] [--model ${DEFAULT_WHISPERKIT_MODEL}]`);
   const sphere = normalizeSphere(args.sphere, "personal");
   const language = String(args.lang || "auto").trim().toLowerCase();
+  const focus = String(args.focus || "").trim();
+  const autoSummary = !normalizeBoolean(args["skip-summary"], false);
+  const autoIngestProposal = !normalizeBoolean(args["skip-atenea-proposal"], false);
   const { requestedModel, resolvedModel } = resolveWhisperKitModel(args.model || DEFAULT_WHISPERKIT_MODEL);
   const videoId = extractYouTubeVideoId(url);
   const canonicalUrl = `https://www.youtube.com/watch?v=${videoId}`;
@@ -262,6 +267,13 @@ ${renderTranscriptBody(transcriptEntries)}
 `;
 
   await writeTextFile(outputPath, markdown);
+  const postprocess = await runTranscriptPostprocess({
+    transcriptPath: outputPath,
+    sphere,
+    focus,
+    autoSummary,
+    autoIngestProposal
+  });
 
   return {
     outputPath,
@@ -272,7 +284,8 @@ ${renderTranscriptBody(transcriptEntries)}
     transcriptLanguage: language,
     model: requestedModel,
     resolvedModel,
-    entryCount: transcriptEntries.length
+    entryCount: transcriptEntries.length,
+    postprocess
   };
 }
 

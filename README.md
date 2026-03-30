@@ -27,6 +27,7 @@ radar-os/
   AGENTS.md
   CLAUDE.md
   scripts/
+  data/
   transcripts/
   resources/
   notes/
@@ -69,15 +70,15 @@ No deben llamarse `agentes` mientras no tengan autonomia real, estado propio, re
 Se han dejado estos comandos base para procesar videos de YouTube dentro del rol de `radar-os`:
 
 - `radar-os_youtube_transcriber`
-- `radar-os_macwhisper_transcriber`
 - `radar-os_whisperkit_transcriber`
+- `radar-os_transcript_backfill`
 - `radar-os_video_summarizer`
 - `radar-os_youtube_pipeline`
 - `radar-os_atenea_ingestor`
 
 ### 1. `radar-os_youtube_transcriber`
 
-Captura una transcripcion bruta y la guarda en `transcripts/`.
+Captura una transcripcion bruta, la guarda en `transcripts/`, la persiste en la BD local de `radar-os` y luego intenta generar el resumen interpretativo.
 
 Ejemplo:
 
@@ -87,19 +88,16 @@ npm run radar-os_youtube_transcriber -- --url "https://www.youtube.com/watch?v=Y
 
 Comportamiento:
 
-- intenta obtener captions del video
-- si no existen, intenta fallback ASR con OpenAI
+- intenta obtener captions del video cuando existan
+- si no hay captions, falla y te empuja a usar `radar-os_whisperkit_transcriber`
 - escribe un markdown con origen, metodo y transcripcion
-
-Requisitos para fallback ASR:
-
-- `yt-dlp` instalado en el sistema
-- `OPENAI_API_KEY`
-- `OPENAI_TRANSCRIBE_MODEL`
+- guarda el bruto tambien en `data/radar-os.sqlite`
+- lanza automaticamente `radar-os_video_summarizer`
+- si el resumen se genera, intenta enviarlo a `atenea` como material pendiente de validacion
 
 ### 2. `radar-os_video_summarizer`
 
-Lee una transcripcion ya guardada, consulta contexto canónico en `atenea` y genera una propuesta de resumen en `proposals/`.
+Lee una transcripcion ya guardada, consulta contexto canónico en `atenea` y genera una propuesta de resumen local en `proposals/`.
 
 Ejemplo:
 
@@ -114,46 +112,33 @@ Salida esperada:
 - relevancia para objetivos activos en `atenea`
 - propuestas accionables
 - claims a validar
+- este output es el que puede enviarse a `atenea` para review, no el bruto
 
 Requisitos:
 
-- `OPENAI_API_KEY`
-- `OPENAI_MODEL`
-
-### 3. `radar-os_macwhisper_transcriber`
-
-Usa `MacWhisper` en local mediante UI scripting para enviar una URL de YouTube al campo Home de la app y luego leer la transcripcion terminada desde su base de datos local.
-
-Ejemplo:
-
-```bash
-npm run radar-os_macwhisper_transcriber -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal
-```
-
-Requisitos:
-
-- `MacWhisper.app` instalado en `/Applications`
-- permiso de Accesibilidad para Terminal o Codex
+- acceso local al repo y al contexto de `atenea`
 
 Notas:
 
-- esta via evita OpenAI y funciona en local
-- depende de automatizacion de UI, por lo que es mas fragil que una CLI nativa
+- usa `ollama` con `qwen3.5:9b` cuando está disponible localmente
+- si el modelo local no está disponible, usa un método local determinista y extractivo como fallback
+- el resultado sigue siendo interpretativo y requiere validación humana
 
-### 4. `radar-os_youtube_pipeline`
+### 3. `radar-os_youtube_pipeline`
 
-Orquesta ambos pasos en secuencia.
+Orquesta el flujo completo:
+
+- transcripcion
+- persistencia local del bruto en `radar-os`
+- resumen
+- envio de la propuesta a `atenea` para review
+
+Por defecto usa `WhisperKit` con el modelo turbo del proyecto.
 
 Ejemplo:
 
 ```bash
 npm run radar-os_youtube_pipeline -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --focus "productividad y aprendizaje"
-```
-
-Ejemplo con `MacWhisper`:
-
-```bash
-npm run radar-os_youtube_pipeline -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --transcriber macwhisper --focus "productividad y aprendizaje"
 ```
 
 Ejemplo con pipeline local robusto:
@@ -162,7 +147,13 @@ Ejemplo con pipeline local robusto:
 npm run radar-os_youtube_pipeline -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --transcriber whisperkit --lang en --focus "productividad y aprendizaje"
 ```
 
-### 5. `radar-os_whisperkit_transcriber`
+Si necesitas usar la via simple por captions, puedes forzar:
+
+```bash
+npm run radar-os_youtube_pipeline -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --transcriber youtube --lang en --focus "productividad y aprendizaje"
+```
+
+### 4. `radar-os_whisperkit_transcriber`
 
 Usa una cadena 100% local por CLI:
 
@@ -178,11 +169,36 @@ npm run radar-os_whisperkit_transcriber -- --url "https://www.youtube.com/watch?
 
 Ventajas:
 
-- no depende de OpenAI
 - no depende de UI scripting
+- es la via local por defecto del proyecto
 - es automatizable y más estable
 - modelo por defecto del proyecto: `large-v3-turbo`
 - el script resuelve internamente `large-v3-turbo` a `whisper-large-v3-v20240930_turbo_632MB`, que es el identificador que entiende `whisperkit-cli`
+
+### 5. `radar-os_transcript_backfill`
+
+Reprocesa transcripciones ya existentes para aplicar el flujo actual:
+
+- persistir el bruto en la BD local
+- generar propuesta en `proposals/`
+- enviar la propuesta a `atenea` para review si corresponde
+- saltar automaticamente las transcripciones que ya tengan resumen y ya hayan sido reportadas a `atenea`
+
+Ejemplos:
+
+```bash
+npm run radar-os_transcript_backfill -- --all
+```
+
+```bash
+npm run radar-os_transcript_backfill -- --input transcripts/mi-transcript.md --focus "productividad y aprendizaje"
+```
+
+Si quieres forzar que tambien reconsidere casos ya completos:
+
+```bash
+npm run radar-os_transcript_backfill -- --all --include-completed true
+```
 
 ### 6. `radar-os_atenea_ingestor`
 
@@ -192,6 +208,12 @@ Casos soportados:
 
 - transcript bruto hacia `/api/import/transcript`
 - propuesta o resumen hacia `/api/raw`
+
+Uso recomendado actualizado:
+
+- conservar el transcript bruto dentro de `radar-os` y su BD local
+- enviar a `atenea` sobre todo propuestas o resúmenes interpretativos
+- hacer que esas propuestas entren pendientes de validacion antes de consolidar ideas
 
 Ejemplos:
 
@@ -205,13 +227,14 @@ npm run radar-os_atenea_ingestor -- --input proposals/mi-resumen.md --kind propo
 
 Uso recomendado:
 
-- transcript: `auto-process false`
+- transcript: usar solo si necesitas una ingestión explícita de evidencia bruta
 - proposal: `auto-process true` para que entre a review en `atenea`
 
 ## Notas de diseño
 
-- La transcripcion vive en `radar-os` como material bruto.
+- La transcripcion vive en `radar-os` como material bruto y tambien se persiste en la BD local `data/radar-os.sqlite`.
 - El resumen generado en `proposals/` sigue siendo material interpretativo pendiente de validacion.
+- El bruto no debe convertirse en ideas consolidadas sin pasar por review.
 - La relevancia personal o profesional debe apoyarse en contexto real de `atenea`, no en memoria local de `radar-os`.
 - Si un resumen generado quiere consolidarse como memoria, debe pasar por review humana en `atenea`.
 - Terminologia recomendada:

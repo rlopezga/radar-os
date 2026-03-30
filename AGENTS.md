@@ -40,19 +40,21 @@ Solo usar `agente` si existe autonomia real, estado o memoria propia, capacidad 
 Cuando se procese un video de YouTube, usar este orden:
 
 1. `radar-os_youtube_transcriber` para capturar la transcripcion bruta en `transcripts/`
-2. `radar-os_macwhisper_transcriber` cuando se quiera una via local usando `MacWhisper`
-3. `radar-os_whisperkit_transcriber` cuando se quiera una via local robusta por CLI
+2. `radar-os_whisperkit_transcriber` como via local por defecto usando el modelo turbo del proyecto
+3. `radar-os_youtube_pipeline` para ejecutar transcripcion, persistencia local, resumen y envio a review
 4. `radar-os_video_summarizer` para generar un resumen orientado a relevancia en `proposals/`
-5. `radar-os_atenea_ingestor` para enviar el transcript o la propuesta a `atenea`
+5. `radar-os_atenea_ingestor` para enviar la propuesta a `atenea` como material pendiente de validacion
 
 Reglas:
 
 - la transcripcion es evidencia bruta
+- el bruto debe quedarse tambien en la BD local de `radar-os`
 - el resumen sigue siendo interpretativo y requiere validacion
 - la relevancia para objetivos del usuario debe apoyarse en contexto canónico de `atenea`
 - no consolidar conclusiones finales dentro de `radar-os`
+- preferir enviar a `atenea` el material interpretativo para review antes que el transcript bruto
 - si en el futuro se crean componentes autonomos, documentar de forma separada que ya no son scripts sino agentes
-- si se usa `radar-os_whisperkit_transcriber`, preferir como modelo por defecto `whisper-large-v3-v20240930_turbo_632MB`
+- usar por defecto `large-v3-turbo`, resuelto internamente al identificador canónico de WhisperKit
 
 ## Criterio de calidad
 
@@ -62,3 +64,12 @@ Toda captura o clasificacion debe dejar claro:
 - por que puede ser relevante
 - si requiere validacion
 - que esfera o contexto le corresponde si aplica
+
+## Uso de Ollama en agentes y scripts
+
+- Considerar `ollama` solo para scripts, workers o agentes que ejecuten procesamiento local, concreto y acotado.
+- En este repo aplica especialmente a clasificación, extracción, normalización, resumen, postproceso y transformación de materiales de entrada.
+- Usarlo cuando ayude a reducir coste y tokens en Claude Code o Codex, evitando enviar bruto innecesario a modelos externos.
+- No usarlo como modelo general por defecto del repo ni como sustituto del criterio de relevancia, review o gobierno del sistema.
+- No delegar a `ollama` conclusiones finales, consolidación de memoria, cambios transversales ni tareas con alta ambigüedad.
+- Todo uso de `ollama` debe producir salidas estructuradas, verificables y tratadas como material auxiliar o propuesta para revisión.

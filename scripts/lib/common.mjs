@@ -140,6 +140,46 @@ export function buildFrontmatter(data) {
   return `${lines.join("\n")}\n`;
 }
 
+export function parseFrontmatter(markdown) {
+  const match = String(markdown || "").match(/^---\n([\s\S]*?)\n---\n?/);
+
+  if (!match) {
+    return { frontmatter: {}, body: String(markdown || "").trim() };
+  }
+
+  const frontmatter = {};
+
+  match[1].split("\n").forEach((line) => {
+    const separatorIndex = line.indexOf(":");
+
+    if (separatorIndex === -1) {
+      return;
+    }
+
+    const key = line.slice(0, separatorIndex).trim();
+    const rawValue = line.slice(separatorIndex + 1).trim();
+
+    try {
+      frontmatter[key] = JSON.parse(rawValue);
+    } catch {
+      frontmatter[key] = rawValue.replace(/^"|"$/g, "");
+    }
+  });
+
+  return {
+    frontmatter,
+    body: String(markdown || "").slice(match[0].length).trim()
+  };
+}
+
+export function normalizeBoolean(value, fallback = false) {
+  if (value === undefined || value === null || value === "") {
+    return fallback;
+  }
+
+  return ["1", "true", "yes"].includes(String(value).trim().toLowerCase());
+}
+
 export async function ensureDir(dirPath) {
   await fs.mkdir(dirPath, { recursive: true });
 }

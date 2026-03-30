@@ -1,16 +1,13 @@
 #!/usr/bin/env node
 
-import fs from "node:fs/promises";
 import path from "node:path";
-import { execFile } from "node:child_process";
-import { promisify } from "node:util";
 import {
   ROOT_DIR,
   buildFrontmatter,
-  ensureDir,
   extractYouTubeVideoId,
   formatTimestamp,
   isoDateString,
+  normalizeBoolean,
   normalizeSphere,
   parseCliArgs,
   readJsonResponse,
@@ -18,8 +15,7 @@ import {
   slugify,
   writeTextFile
 } from "./lib/common.mjs";
-
-const execFileAsync = promisify(execFile);
+import { runTranscriptPostprocess } from "./lib/radar-os_postprocess.mjs";
 
 async function fetchYouTubeWatchPage(url) {
   const response = await fetch(url, {
@@ -117,82 +113,14 @@ function renderTranscriptBody(captionEvents) {
   return captionEvents.map((entry) => `[${formatTimestamp(entry.startSeconds)}] ${entry.text}`).join("\n\n");
 }
 
-async function commandExists(command) {
-  try {
-    await execFileAsync("sh", ["-lc", `command -v ${command}`]);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function transcribeViaOpenAiAudio({ videoUrl, tempDir }) {
-  const apiKey = String(process.env.OPENAI_API_KEY || "").trim();
-  const model = String(process.env.OPENAI_TRANSCRIBE_MODEL || "").trim();
-
-  if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is required for ASR fallback.");
-  }
-
-  if (!model) {
-    throw new Error("OPENAI_TRANSCRIBE_MODEL is required for ASR fallback.");
-  }
-
-  const hasYtDlp = await commandExists("yt-dlp");
-  if (!hasYtDlp) {
-    throw new Error("yt-dlp is not installed, so ASR fallback is not available.");
-  }
-
-  await ensureDir(tempDir);
-  const outputTemplate = path.join(tempDir, "audio.%(ext)s");
-
-  await execFileAsync("yt-dlp", ["-f", "bestaudio", "--no-playlist", "-o", outputTemplate, videoUrl]);
-  const tempFiles = await fs.readdir(tempDir);
-  const audioFileName = tempFiles.find((fileName) => fileName.startsWith("audio."));
-
-  if (!audioFileName) {
-    throw new Error("yt-dlp did not produce an audio file.");
-  }
-
-  const audioPath = path.join(tempDir, audioFileName);
-  const fileBlob = await fs.openAsBlob(audioPath);
-  const formData = new FormData();
-  formData.set("model", model);
-  formData.set("file", fileBlob, audioFileName);
-  formData.set("response_format", "verbose_json");
-
-  const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${apiKey}`
-    },
-    body: formData
-  });
-
-  const payload = await readJsonResponse(response);
-
-  if (!response.ok) {
-    throw new Error(payload?.error?.message || payload?.message || `ASR request failed with HTTP ${response.status}`);
-  }
-
-  const segments = Array.isArray(payload?.segments) ? payload.segments : [];
-
-  if (segments.length) {
-    return segments.map((segment) => ({
-      startSeconds: Math.round(Number(segment.start) || 0),
-      text: String(segment.text || "").replace(/\s+/g, " ").trim()
-    })).filter((segment) => segment.text);
-  }
-
-  const text = String(payload?.text || "").trim();
-  return text ? [{ startSeconds: 0, text }] : [];
-}
-
 export async function runYoutubeTranscriber(cliArgs = process.argv.slice(2)) {
   const args = parseCliArgs(cliArgs);
   const url = requireArg(args, "url", "Usage: --url <youtube-url>");
   const sphere = normalizeSphere(args.sphere, "personal");
   const language = String(args.lang || "en").trim().toLowerCase();
+  const focus = String(args.focus || "").trim();
+  const autoSummary = !normalizeBoolean(args["skip-summary"], false);
+  const autoIngestProposal = !normalizeBoolean(args["skip-atenea-proposal"], false);
   const capturedAt = new Date().toISOString();
   const videoId = extractYouTubeVideoId(url);
   const canonicalUrl = `https://www.youtube.com/watch?v=${videoId}`;
@@ -202,7 +130,7 @@ export async function runYoutubeTranscriber(cliArgs = process.argv.slice(2)) {
   const videoDetails = playerResponse?.videoDetails || {};
   const captionTracks = playerResponse?.captions?.playerCaptionsTracklistRenderer?.captionTracks || [];
 
-  let transcriptMethod = "captions";
+  const transcriptMethod = "captions";
   let chosenTrack = chooseCaptionTrack(captionTracks, language);
   let transcriptEntries = [];
 
@@ -212,16 +140,7 @@ export async function runYoutubeTranscriber(cliArgs = process.argv.slice(2)) {
   }
 
   if (!transcriptEntries.length) {
-    transcriptMethod = "asr";
-    const tempDir = path.join(ROOT_DIR, ".tmp", `yt-${videoId}`);
-    transcriptEntries = await transcribeViaOpenAiAudio({
-      videoUrl: canonicalUrl,
-      tempDir
-    });
-  }
-
-  if (!transcriptEntries.length) {
-    throw new Error("No transcript content could be extracted from the video.");
+    throw new Error("No captions were available for this video. Use radar-os_whisperkit_transcriber for local transcription with large-v3-turbo.");
   }
 
   const title = String(videoDetails?.title || oembed?.title || `youtube-${videoId}`).trim();
@@ -258,6 +177,13 @@ ${renderTranscriptBody(transcriptEntries)}
 `;
 
   await writeTextFile(outputPath, markdown);
+  const postprocess = await runTranscriptPostprocess({
+    transcriptPath: outputPath,
+    sphere,
+    focus,
+    autoSummary,
+    autoIngestProposal
+  });
 
   return {
     outputPath,
@@ -266,7 +192,8 @@ ${renderTranscriptBody(transcriptEntries)}
     sphere,
     transcriptMethod,
     transcriptLanguage: chosenTrack?.languageCode || language,
-    entryCount: transcriptEntries.length
+    entryCount: transcriptEntries.length,
+    postprocess
   };
 }
 
