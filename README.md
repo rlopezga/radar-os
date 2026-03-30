@@ -60,13 +60,20 @@ La referencia de integracion es:
 - tareas canónicas
 - interpretaciones consolidadas sin pasar por `atenea`
 
-## Agentes locales para video
+## Scripts locales para video
 
-Se han dejado tres comandos base para procesar videos de YouTube dentro del rol de `radar-os`:
+Estos componentes son `scripts` especializados y un `pipeline` simple.
+
+No deben llamarse `agentes` mientras no tengan autonomia real, estado propio, reintentos y capacidad de operar sin invocacion directa.
+
+Se han dejado estos comandos base para procesar videos de YouTube dentro del rol de `radar-os`:
 
 - `radar-os_youtube_transcriber`
+- `radar-os_macwhisper_transcriber`
+- `radar-os_whisperkit_transcriber`
 - `radar-os_video_summarizer`
 - `radar-os_youtube_pipeline`
+- `radar-os_atenea_ingestor`
 
 ### 1. `radar-os_youtube_transcriber`
 
@@ -113,7 +120,27 @@ Requisitos:
 - `OPENAI_API_KEY`
 - `OPENAI_MODEL`
 
-### 3. `radar-os_youtube_pipeline`
+### 3. `radar-os_macwhisper_transcriber`
+
+Usa `MacWhisper` en local mediante UI scripting para enviar una URL de YouTube al campo Home de la app y luego leer la transcripcion terminada desde su base de datos local.
+
+Ejemplo:
+
+```bash
+npm run radar-os_macwhisper_transcriber -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal
+```
+
+Requisitos:
+
+- `MacWhisper.app` instalado en `/Applications`
+- permiso de Accesibilidad para Terminal o Codex
+
+Notas:
+
+- esta via evita OpenAI y funciona en local
+- depende de automatizacion de UI, por lo que es mas fragil que una CLI nativa
+
+### 4. `radar-os_youtube_pipeline`
 
 Orquesta ambos pasos en secuencia.
 
@@ -123,8 +150,70 @@ Ejemplo:
 npm run radar-os_youtube_pipeline -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --focus "productividad y aprendizaje"
 ```
 
+Ejemplo con `MacWhisper`:
+
+```bash
+npm run radar-os_youtube_pipeline -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --transcriber macwhisper --focus "productividad y aprendizaje"
+```
+
+Ejemplo con pipeline local robusto:
+
+```bash
+npm run radar-os_youtube_pipeline -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --transcriber whisperkit --lang en --focus "productividad y aprendizaje"
+```
+
+### 5. `radar-os_whisperkit_transcriber`
+
+Usa una cadena 100% local por CLI:
+
+- `yt-dlp` para descargar audio
+- `ffmpeg` para extracción cuando sea necesaria
+- `whisperkit-cli` para transcribir en Apple Silicon
+
+Ejemplo:
+
+```bash
+npm run radar-os_whisperkit_transcriber -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --lang en --model whisper-large-v3-v20240930_turbo_632MB
+```
+
+Ventajas:
+
+- no depende de OpenAI
+- no depende de UI scripting
+- es automatizable y más estable
+- modelo por defecto del proyecto: `whisper-large-v3-v20240930_turbo_632MB`
+
+### 6. `radar-os_atenea_ingestor`
+
+Empuja materiales ya generados desde `radar-os` hacia `atenea`.
+
+Casos soportados:
+
+- transcript bruto hacia `/api/import/transcript`
+- propuesta o resumen hacia `/api/raw`
+
+Ejemplos:
+
+```bash
+npm run radar-os_atenea_ingestor -- --input transcripts/mi-transcript.md --kind transcript --auto-process false
+```
+
+```bash
+npm run radar-os_atenea_ingestor -- --input proposals/mi-resumen.md --kind proposal --auto-process true
+```
+
+Uso recomendado:
+
+- transcript: `auto-process false`
+- proposal: `auto-process true` para que entre a review en `atenea`
+
 ## Notas de diseño
 
 - La transcripcion vive en `radar-os` como material bruto.
 - El resumen generado en `proposals/` sigue siendo material interpretativo pendiente de validacion.
 - La relevancia personal o profesional debe apoyarse en contexto real de `atenea`, no en memoria local de `radar-os`.
+- Si un resumen generado quiere consolidarse como memoria, debe pasar por review humana en `atenea`.
+- Terminologia recomendada:
+- usar `script` para comandos invocados manualmente
+- usar `worker` para piezas especializadas dentro de un pipeline
+- reservar `agente` para componentes con autonomia real

@@ -1,0 +1,556 @@
+1
+00:00:00,000 --> 00:00:03,000
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Proyecto AEK<|3.00|>
+
+2
+00:00:03,000 --> 00:00:09,119
+<|3.00|> Este proyecto está enmarcado dentro del programa Oriéntate de la Fundación Junior Achievement<|9.12|>
+
+3
+00:00:09,119 --> 00:00:12,979
+<|9.12|> y está dirigido a alumnos de entre 12 y 16 años.<|12.98|>
+
+4
+00:00:12,979 --> 00:00:18,639
+<|12.98|> Es una edad orientativa puesto que se puede incorporar también a alumnos de edades inferiores<|18.64|>
+
+5
+00:00:18,639 --> 00:00:23,239
+<|18.64|> o superiores, dependerá un poco del nivel madurativo de los alumnos y de la decisión<|23.24|>
+
+6
+00:00:23,239 --> 00:00:24,600
+<|23.24|> del docente.<|24.60|>
+
+7
+00:00:24,600 --> 00:00:37,599
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Es un programa sobre todo de orientación laboral y profesional y la idea sobre todo es fomentar las carreras STEM, ciencias, tecnología, ingeniería y matemáticas, además de impulsar el liderazgo de la mujer en estas carreras.<|13.00|>
+
+8
+00:00:37,599 --> 00:00:50,599
+<|13.00|> Además cuenta con todos los recursos necesarios para poder impartir la sesión con los alumnos, por lo cual no es necesario trabajar ni crear ningún tipo de material adicional.<|26.00|>
+
+9
+00:00:50,599 --> 00:00:55,599
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Todo el contenido necesario se encontrará en la plataforma digital y que después os mostraré.<|5.00|>
+
+10
+00:00:57,719 --> 00:01:05,299
+<|7.12|> ¿Por qué el programa Oriéntate? Pues trabaja habilidades no cognitivas que son fundamentales para el desarrollo madurativo de los alumnos,<|14.70|>
+
+11
+00:01:05,759 --> 00:01:12,559
+<|15.16|> se refuerza las carreras STEM, el liderazgo de la mujer y es un proyecto sobre todo de orientación laboral y profesional<|21.96|>
+
+12
+00:01:12,559 --> 00:01:18,500
+<|21.96|> que viene muy bien para los alumnos a la hora de tomar decisiones de cara a su futuro profesional.<|27.90|>
+
+13
+00:01:18,500 --> 00:01:37,599
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Desde hace varios años y gracias a la colaboración de la Universidad de Murcia llevamos a cabo un estudio de impacto para medir de qué forma influye o repercute en los estudiantes el que venga una persona ajena al centro educativo y al entorno familiar a impartir una sesión de 50 minutos y vimos que la gente se ha convertido en un estudio de impacto.<|19.10|><|endoftext|>
+
+14
+00:01:37,599 --> 00:01:43,439
+<|startoftranscript|><|es|><|transcribe|><|0.00|> que aumentó un 29% el número de chicas que finalmente deciden estudiar las carreras STEM<|5.84|>
+
+15
+00:01:43,439 --> 00:01:47,259
+<|5.84|> un 29 en chicas y un 23 en chicos las expectativas educativas<|9.66|>
+
+16
+00:01:47,259 --> 00:01:50,599
+<|9.66|> en un inicio no sabían si querían seguir cursando estudios superiores<|13.00|>
+
+17
+00:01:50,599 --> 00:01:53,500
+<|13.00|> y gracias a este programa se dan cuenta de que sí<|15.90|>
+
+18
+00:01:53,500 --> 00:01:59,120
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Un 34 en chicas y un 38 en chicos el trabajo duro se dan cuenta de que si no perseveran o<|5.62|>
+
+19
+00:01:59,120 --> 00:02:03,180
+<|5.62|> se esfuerzan pues obviamente no van a obtener mejores logros ya no solo a nivel académico<|9.68|>
+
+20
+00:02:03,180 --> 00:02:06,260
+<|9.68|> sino también personal y laboral en un futuro.<|12.76|>
+
+21
+00:02:06,260 --> 00:02:10,940
+<|12.76|> Aumento un 30 en chicas y un 35 en chicos la mentalidad en desarrollo dejan de dar por<|17.44|>
+
+22
+00:02:10,940 --> 00:02:17,759
+<|17.44|> hecho que se les da mal una asignatura en concreto y se dan cuenta pues que con ese trabajo duro<|24.26|>
+
+23
+00:02:17,759 --> 00:02:21,699
+<|24.26|> ese nivel de perseverancia y esfuerzo pues pueden obtener mejores logros.<|28.20|>
+
+24
+00:02:21,699 --> 00:02:28,440
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Aumentó un 34% en chicas y un 23% en chicos el espíritu emprendedor de querer autoemplear se forma su propia empresa.<|6.74|>
+
+25
+00:02:29,220 --> 00:02:34,479
+<|7.52|> Y también un 29% en chicas y un 27% en chicos el capital cívico.<|12.78|>
+
+26
+00:02:34,759 --> 00:02:40,839
+<|13.06|> Dejan de actuar de una manera tan impulsiva y se dan cuenta de que todo acto tiene una consecuencia.<|19.14|>
+
+27
+00:02:41,600 --> 00:02:49,600
+<|startoftranscript|><|es|><|transcribe|><|0.00|> El proyecto AEC, como comentaba anteriormente, está orientado a una edad orientativa de entre 1º a 4º de la ESO,<|8.00|>
+
+28
+00:02:49,600 --> 00:02:54,600
+<|8.00|> en la que vosotros como voluntarios únicamente impartiríais una sesión de 50 minutos.<|13.00|>
+
+29
+00:02:54,600 --> 00:03:01,600
+<|13.00|> Además, este programa se desarrolla en formato presencial, no se realiza en formato online,<|20.00|>
+
+30
+00:03:01,600 --> 00:03:06,600
+<|20.00|> y se realiza en la Comunidad de Madrid y las provincias de Barcelona y Sevilla.<|25.00|>
+
+31
+00:03:06,600 --> 00:03:22,639
+<|startoftranscript|><|es|><|transcribe|><|0.00|> El programa a impartir, como bien llevo comentando la formación, es el de Oriéntate, en la que el docente selecciona una de las tres píldoras de las que se compone el proyecto para reforzar esa habilidad en concreto con los alumnos.<|16.04|>
+
+32
+00:03:22,639 --> 00:03:32,779
+<|16.04|> El docente es el responsable de seleccionar la píldora a trabajar, por lo cual cuando enviamos el matching la píldora será aleatoria.<|26.18|>
+
+33
+00:03:33,100 --> 00:03:41,100
+<|startoftranscript|><|es|><|transcribe|><|0.00|> ¿Qué recursos ofrece este proyecto? Pues tres sesiones de píldoras de habilidades, todas ellas recogidas en la Ley de Educación.<|8.00|>
+
+34
+00:03:41,100 --> 00:03:47,100
+<|8.00|> Este programa lo bueno que tiene es que la puede desarrollar tanto el docente como el voluntario,<|14.00|>
+
+35
+00:03:47,100 --> 00:03:57,700
+<|14.00|> ya que otros programas en la Fundación pues únicamente los puede desarrollar el propio en caso de que haya voluntarios, en caso contrario pues no se pueden desarrollar.<|24.60|>
+
+36
+00:03:57,699 --> 00:04:03,940
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Este programa, al poder desarrollar el propio docente, también podemos llegar a localidades a nivel nacional<|6.24|>
+
+37
+00:04:03,940 --> 00:04:10,819
+<|6.24|> de las que no disponen de voluntarios y que esos alumnos al final tienen interés en recibir el programa.<|13.12|>
+
+38
+00:04:10,819 --> 00:04:18,500
+<|13.12|> Como comento, cada voluntario impartirá una única sesión de 50 minutos y será asignada aleatoriamente.<|20.80|>
+
+39
+00:04:18,500 --> 00:04:31,500
+<|startoftranscript|><|es|><|transcribe|><|0.00|> ¿Cómo se estructuran las píldoras de habilidad? Pues son comunidades didácticas de 50 minutos de duración, hay 3 habilidades en total y estas habilidades están marcadas en la competencia clave que establece la ley de educación.<|13.00|>
+
+40
+00:04:31,500 --> 00:04:41,500
+<|13.00|> Constan de una descripción donde se describe lo que se va a trabajar, los objetivos que se quieren conseguir, los materiales que vamos a utilizar y el tiempo estimado para cada actividad.<|23.00|>
+
+41
+00:04:41,500 --> 00:04:48,540
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Una introducción donde os pedimos que ya que tienen la gran suerte de contar con vosotros, con voluntarios en el aula,<|7.04|>
+
+42
+00:04:49,059 --> 00:04:54,980
+<|7.56|> pues si podéis acercarles a vuestra realidad profesional y que es súper desconocida para ellos, pues muchísimo mejor.<|13.48|>
+
+43
+00:04:55,420 --> 00:05:06,000
+<|13.92|> Todo lo que podéis aportar en cuanto a experiencia académica y laboral, incluso como tuvisteis que tomar la decisión de seleccionar una carrera u otra,<|24.50|>
+
+44
+00:05:06,000 --> 00:05:17,000
+<|startoftranscript|><|es|><|transcribe|><|0.00|> qué es lo que os motivaba, qué no, cómo teníais, cuándo llegasteis a tener claro, cuándo no, todo esto les va a venir súper bien a ellos para la hora de tomar este tipo de decisiones.<|11.00|>
+
+45
+00:05:18,220 --> 00:05:28,399
+<|12.22|> Después se trabajarían unas actividades específicas en función de la habilidad en concreto y por último unas conclusiones, donde reflexionarían sobre lo que han aprendido a lo largo de la sesión.<|22.40|>
+
+46
+00:05:28,399 --> 00:05:35,839
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Otra cosa súper importante, no hay que estar especializado en ningún área en concreto para desarrollar algunas de las tres habilidades.<|7.44|>
+
+47
+00:05:36,000 --> 00:05:40,639
+<|7.60|> Son habilidades que son necesarias para nuestro día a día, que a todos nos vienen bien.<|12.24|>
+
+48
+00:05:41,299 --> 00:05:49,839
+<|12.90|> Vais a tener todo el contenido en la plataforma, tiene un nivel muy básico, pues adaptado también al nivel evolutivo al que va referido,<|21.44|>
+
+49
+00:05:50,320 --> 00:05:53,660
+<|21.92|> por lo cual no hay que estar especializado en ningún área en concreto.<|25.26|>
+
+50
+00:05:54,500 --> 00:06:00,000
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Os voy a hacer un breve resumen de las habilidades, pero en la plataforma que después os mostraré<|5.50|>
+
+51
+00:06:00,000 --> 00:06:03,000
+<|5.50|> aparecerá todo el contenido bien detallado<|8.50|>
+
+52
+00:06:03,000 --> 00:06:07,200
+<|8.50|> Investigando sobre la fake news, pues aquí la importancia es que descubran<|12.70|>
+
+53
+00:06:07,200 --> 00:06:11,500
+<|12.70|> y aprendan a identificar que noticias son reales de las que no<|17.00|>
+
+54
+00:06:11,500 --> 00:06:14,700
+<|17.00|> y sobre todo a ellos que tienen tanto acceso a internet<|20.20|>
+
+55
+00:06:14,700 --> 00:06:21,980
+<|startoftranscript|><|es|><|transcribe|><|0.00|> a las redes sociales, pues que sobre todo que aprendan a identificar este tipo de bulos.<|7.28|>
+
+56
+00:06:21,980 --> 00:06:26,920
+<|7.28|> Mejorar la sociedad digitalizada, la idea es que además de autoconocerse un poquito<|12.22|>
+
+57
+00:06:26,920 --> 00:06:35,680
+<|12.22|> y de encontrar esa motivación intrínseca, pues realicen una idea de negocio basado en el póster de Dafo<|20.98|>
+
+58
+00:06:35,680 --> 00:06:41,200
+<|20.98|> en la que atraves de productos sostenibles y de lluvia de ideas.<|26.50|>
+
+59
+00:06:41,200 --> 00:06:44,200
+<|26.50|> La idea también es fomentar un poco el trabajo en equipo.<|29.50|>
+
+60
+00:06:44,200 --> 00:07:00,600
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Y Big Data, buen uso de las redes sociales, pues aquí van a descubrir la importancia de gestionar sus datos y ya que no podemos limitar el que pasen tantas horas en el ámbito de las redes sociales, por lo menos que aprendan a hacer un buen uso de ellas.<|16.40|><|endoftext|>
+
+61
+00:07:00,600 --> 00:07:04,880
+<|startoftranscript|><|es|><|transcribe|><|0.00|> ahora sí, todo este contenido como os comentaba lo vamos a encontrar en la<|4.28|>
+
+62
+00:07:04,880 --> 00:07:10,440
+<|4.28|> plataforma digital y que os voy a mostrar a continuación, una vez que os habéis<|9.84|>
+
+63
+00:07:10,440 --> 00:07:16,700
+<|9.84|> inscrito en la plataforma, yo voy a acceder con este email de prueba, os aparece<|16.10|>
+
+64
+00:07:16,700 --> 00:07:19,500
+<|startoftranscript|><|es|><|transcribe|><|0.00|> nada más entrar un recordatorio de que es<|2.80|>
+
+65
+00:07:19,500 --> 00:07:20,740
+<|2.80|> obligatorio<|4.04|>
+
+66
+00:07:20,740 --> 00:07:23,440
+<|4.04|> e importante para poder participar<|6.74|>
+
+67
+00:07:23,440 --> 00:07:28,640
+<|6.74|> adjuntar tu certificado de delito de naturaleza sexual esto es fundamental<|11.94|>
+
+68
+00:07:28,640 --> 00:07:33,820
+<|11.94|> ya que este programa como comentaba anteriormente es 100% presencial<|17.12|>
+
+69
+00:07:33,820 --> 00:07:36,820
+<|17.12|> vais a estar en contacto con alumnos menores de edad<|20.12|>
+
+70
+00:07:36,820 --> 00:07:43,100
+<|20.12|> y es obligatorio el disponer de este certificado<|26.40|>
+
+71
+00:07:43,100 --> 00:07:59,899
+<|startoftranscript|><|es|><|transcribe|><|0.00|> En vuestro perfil es importante también que cumplimentéis todos los datos que aparecen en cada una de las casillas, sobre todo el tema de provincia y localidad, porque al hacer el matching es necesario que nosotras podamos ver en qué localidad os encontráis.<|16.80|><|endoftext|>
+
+72
+00:07:59,899 --> 00:08:07,779
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Aquí en este apartado donde juntaríais el CDNS y nosotros lo visualizaríamos y os daríamos el ok.<|7.88|>
+
+73
+00:08:08,779 --> 00:08:13,899
+<|8.88|> Una vez que os hayamos macheado, que os enviaremos un email tras la formación,<|14.00|>
+
+74
+00:08:15,259 --> 00:08:26,899
+<|15.36|> os enviaremos un email con los datos del centro educativo asignado, la píldora asignada, la fecha y hora, posibles días y demás...<|27.00|>
+
+75
+00:08:26,899 --> 00:08:34,200
+<|startoftranscript|><|es|><|transcribe|><|0.00|> y ya esté confirmado tanto por vuestra parte como la parte del centro educativo, haremos el matching a través de la plataforma.<|7.30|>
+
+76
+00:08:35,119 --> 00:08:42,679
+<|8.22|> Entonces os aparecerá en el apartado de sesiones ya el grupo en concreto con el que hemos matcheado.<|15.78|>
+
+77
+00:08:42,679 --> 00:08:46,700
+<|15.78|> Esto lo hacemos por parte de la fundación, realizar el matching.<|19.80|>
+
+78
+00:08:46,700 --> 00:08:51,900
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Aquí si entráis en sesión pues obviamente aparecerán los datos de la sesión en concreto<|5.20|>
+
+79
+00:08:51,900 --> 00:08:59,500
+<|5.20|> En este caso es mejora sociedad digitalizala, en la dirección y en el apartado de integrantes<|12.80|>
+
+80
+00:08:59,500 --> 00:09:03,479
+<|12.80|> O encontraréis aquí los datos del docente, su email y demás<|16.78|>
+
+81
+00:09:03,479 --> 00:09:09,179
+<|16.78|> Y aquí en el apartado de voluntarios pues las personas que van a ir a ese grupo en concreto<|22.48|>
+
+82
+00:09:09,179 --> 00:09:11,299
+<|22.48|> Normalmente os ponemos en pareja<|24.60|>
+
+83
+00:09:11,299 --> 00:09:27,479
+<|startoftranscript|><|es|><|transcribe|><|0.00|> O sea que en el email que os enviamos tras la formación, en caso de que tengáis claro que queréis ir con algún compañero en concreto que sepáis que va a asistir, o sea que va a realizar el voluntariado, pues nos lo deberéis de comunicar antes de realizar el matching.<|16.18|><|endoftext|>
+
+84
+00:09:27,900 --> 00:09:34,660
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Después en el mismo apartado tenéis chat de integrantes, aquí en este chat podéis comunicaros con el docente<|6.76|>
+
+85
+00:09:34,660 --> 00:09:41,220
+<|6.76|> pero asimismo por parte de la fundación una vez que se cierre el matching<|13.32|>
+
+86
+00:09:41,220 --> 00:09:44,559
+<|13.32|> os pondremos en contacto con el docente vía email<|16.66|>
+
+87
+00:09:44,559 --> 00:09:50,960
+<|16.66|> aquí es importante a través del email que contactéis con el docente, no esperéis a que él os escriba<|23.06|>
+
+88
+00:09:50,960 --> 00:09:54,400
+<|23.06|> podéis escribir vosotros con todas las dudas que podáis tener<|26.50|>
+
+89
+00:09:54,400 --> 00:10:07,760
+<|startoftranscript|><|es|><|transcribe|><|0.00|> En concreto, cómo es el grupo educativo al que vais a impartir la sesión, si disponen de ordenador y proyector en el aula, ya que será necesario, cómo es el grupo, cómo os podéis dirigir a ellos.<|13.36|>
+
+90
+00:10:08,480 --> 00:10:16,700
+<|14.08|> Todas aquellas dudas que puedan surgir, es necesario tener esa comunicación previa con el docente.<|22.30|>
+
+91
+00:10:16,700 --> 00:10:28,640
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Una vez que ya está macheado y todo en la plataforma, si accedéis a material educativo, os redireccionará a la píldora, en concreto al material de la píldora que vais a trabajar.<|11.94|>
+
+92
+00:10:28,900 --> 00:10:32,260
+<|12.20|> Que en este caso a este prueba ya es mejor a la sociedad, digitalízala.<|15.56|>
+
+93
+00:10:32,799 --> 00:10:36,400
+<|16.10|> Por lo cual me metería en ella haciendo clic...<|19.70|>
+
+94
+00:10:36,400 --> 00:10:44,559
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Y aquí en el cuaderno morado, si clickeamos encima y le damos al apartado de etapas, aparece el manual de preparación y el manual para proyectar.<|8.16|>
+
+95
+00:10:44,840 --> 00:10:51,140
+<|8.44|> El manual de preparación es para que vosotros podáis prepararlo previamente a la sesión con los alumnos.<|14.74|>
+
+96
+00:10:51,680 --> 00:10:58,100
+<|15.28|> Y manual para proyectar es el manual que se va a proyectar el día de la sesión y lo que visualizarán los alumnos en el aula.<|21.70|>
+
+97
+00:10:58,400 --> 00:11:09,119
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Este acceso a la plataforma es único y exclusivo de los voluntarios. Los alumnos no acceden a la plataforma, ellos únicamente verían lo que proyectaríais en el aula.<|10.72|>
+
+98
+00:11:09,960 --> 00:11:17,500
+<|11.56|> Si le dais a manual de preparación y cliquedais en introducción, pues comenzaríamos con la introducción del programa.<|19.10|>
+
+99
+00:11:17,500 --> 00:11:22,500
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Aquí ponemos un tiempo estimado, pero como bien digo es estimado.<|5.00|>
+
+100
+00:11:22,500 --> 00:11:26,500
+<|5.00|> Nosotros ponemos un tiempo estimado en cada actividad que aparece aquí,<|9.00|>
+
+101
+00:11:26,500 --> 00:11:32,500
+<|9.00|> pero obviamente si veis que los chicos están súper involucrados haciendo preguntas y demás en la introducción<|15.00|>
+
+102
+00:11:32,500 --> 00:11:40,400
+<|15.00|> mientras habláis de vuestra experiencia laboral, académica y demás, pues no pasa nada si después le dedicamos menos tiempo a alguna de las actividades.<|22.90|>
+
+103
+00:11:40,400 --> 00:11:47,960
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Como veis, todo está bastante bien detallado para que no surja ningún tipo de duda.<|7.56|>
+
+104
+00:11:48,360 --> 00:11:52,340
+<|7.96|> De todas formas, cuando estéis preparando el contenido, si os surgiese alguna duda,<|11.94|>
+
+105
+00:11:52,440 --> 00:11:54,700
+<|12.04|> estamos aquí para ayudaros desde la Fundación Junior.<|14.30|>
+
+106
+00:11:55,680 --> 00:11:57,200
+<|15.28|> Si eres voluntario...<|16.80|>
+
+107
+00:11:57,200 --> 00:12:05,859
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Hemos puesto además algunos tics para romper el hielo, para comenzar la sesión, para que os sintáis lo más cómodos posible los alumnos también.<|8.66|>
+
+108
+00:12:06,559 --> 00:12:12,840
+<|9.36|> ¿Qué aprenderán en el curso de Oriéntate? Bueno, esto es un poco lo que os estoy comentando, lo que es Oriéntate, los objetivos generales del programa.<|15.64|>
+
+109
+00:12:13,419 --> 00:12:19,500
+<|16.22|> Pasaríamos a la primera actividad, donde también está todo bastante bien detallado, como veis es bastante...<|22.30|>
+
+110
+00:12:19,500 --> 00:12:25,679
+<|startoftranscript|><|es|><|transcribe|><|0.00|> básica el funcionamiento de la plataforma no tiene mucho misterio todo lo ponemos<|6.18|>
+
+111
+00:12:25,679 --> 00:12:29,820
+<|6.18|> bastante detallado incluso todas las descripciones para que no surja ningún<|10.32|>
+
+112
+00:12:29,820 --> 00:12:35,099
+<|10.32|> tipo de duda pero como comento si surgís alguna duda no habría ningún problema<|15.60|>
+
+113
+00:12:35,099 --> 00:12:39,359
+<|15.60|> porque podéis contactar con nosotros pasaríamos a la segunda actividad que<|19.86|>
+
+114
+00:12:39,359 --> 00:12:45,200
+<|19.86|> también sería pues el póster de DAF en este<|25.70|>
+
+115
+00:12:45,200 --> 00:12:52,000
+<|startoftranscript|><|es|><|transcribe|><|0.00|> actividad en concreto, aquí si vais clickeando en los iconos os va apareciendo información de cada cosa<|6.80|>
+
+116
+00:12:52,000 --> 00:12:57,500
+<|6.80|> y iríamos pasando la diapositiva hasta llegar a las conclusiones, que son cinco minutitos<|12.30|>
+
+117
+00:12:57,500 --> 00:13:01,600
+<|12.30|> donde los chicos pues reflexionan un poco sobre lo que han aprendido<|16.40|>
+
+118
+00:13:01,600 --> 00:13:07,000
+<|16.40|> y ahora si nos vamos al manual para proyectar, eso es lo que se proyectaría el día de la sesión<|21.80|>
+
+119
+00:13:07,000 --> 00:13:09,400
+<|21.80|> lo que visualizaría los alumnos en el aula<|24.20|>
+
+120
+00:13:09,400 --> 00:13:15,960
+<|startoftranscript|><|es|><|transcribe|><|0.00|> y es el mismo contenido pero con menos información para que sea todo un poco más visual para ellos<|6.56|>
+
+121
+00:13:15,960 --> 00:13:25,800
+<|6.56|> y no haya tanta información por así decirlo, pero como veis el funcionamiento es bastante básico<|16.40|>
+
+122
+00:13:25,799 --> 00:13:32,580
+<|startoftranscript|><|es|><|transcribe|><|0.00|> y simple, vale, pues aquí encontraréis todo el contenido por lo cual no necesitéis preparar nada adicional<|6.78|>
+
+123
+00:13:32,580 --> 00:13:38,959
+<|6.78|> en el caso en el que la parte introductoria, por ejemplo, que habléis más de vuestra experiencia laboral y profesional<|13.16|>
+
+124
+00:13:38,959 --> 00:13:41,700
+<|13.16|> si queréis hacer una diapositiva<|15.90|>
+
+125
+00:13:41,700 --> 00:13:46,700
+<|startoftranscript|><|es|><|transcribe|><|0.00|> o sea, una o dos diapositivas como mucho en una presentación<|5.00|>
+
+126
+00:13:46,700 --> 00:13:53,400
+<|5.00|> para que sea más visual, pues genial, pero en principio no es necesario<|11.70|>
+
+127
+00:13:53,400 --> 00:14:02,299
+<|11.70|> generar nada adicional. También los docentes no autorizan este contenido para poder impartirlo en el aula, entonces<|20.60|>
+
+128
+00:14:02,299 --> 00:14:12,380
+<|startoftranscript|><|es|><|transcribe|><|0.00|> lo ideal es impartir el contenido que aparece en la plataforma, pero si hay algo en concreto que os gustaría ampliar la información por cualquier casual,<|10.08|>
+
+129
+00:14:12,979 --> 00:14:22,219
+<|10.68|> pues como vais a estar en contacto con el docente, habría que comunicárselo previamente y de esta forma, si da el ok y da su autorización,<|19.92|>
+
+130
+00:14:22,459 --> 00:14:26,880
+<|20.16|> pues se podría poner como una parte adicional para ampliar información.<|24.58|>
+
+131
+00:14:26,880 --> 00:14:27,880
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Gracias.<|1.00|><|endoftext|>
+
+132
+00:14:28,299 --> 00:14:32,019
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Ahora sí, continuamos con la presentación<|3.72|>
+
+133
+00:14:32,019 --> 00:14:38,399
+<|3.72|> Como os comentaba, es obligatorio el certificado de delitos de naturaleza sexual<|10.10|>
+
+134
+00:14:38,399 --> 00:14:45,099
+<|10.10|> Y por último, pero no menos importante, animaros a contar vuestra experiencia en las redes sociales<|16.80|>
+
+135
+00:14:45,099 --> 00:14:52,500
+<|16.80|> Es una forma también de que otros compañeros puedan conocer la iniciativa<|24.20|>
+
+136
+00:14:52,500 --> 00:14:54,700
+<|24.20|> E involucrarse en este tipo de...<|26.40|>
+
+137
+00:14:54,700 --> 00:14:59,660
+<|startoftranscript|><|es|><|transcribe|><|0.00|> de actividad, porque la verdad es que es súper gratificante y beneficiosa para los alumnos.<|4.96|>
+
+138
+00:15:00,239 --> 00:15:06,359
+<|5.54|> Y nada, Darán, muchísimas gracias por vuestra participación y dedicación a este tipo de iniciativas.<|11.66|>
+
+139
+00:15:06,359 --> 00:15:07,359
+<|startoftranscript|><|es|><|transcribe|><|0.00|> Gracias.<|1.00|><|endoftext|>
+
