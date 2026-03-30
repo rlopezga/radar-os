@@ -173,7 +173,7 @@ Usa una cadena 100% local por CLI:
 Ejemplo:
 
 ```bash
-npm run radar-os_whisperkit_transcriber -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --lang en --model whisper-large-v3-v20240930_turbo_632MB
+npm run radar-os_whisperkit_transcriber -- --url "https://www.youtube.com/watch?v=YGof1CfY8IA" --sphere personal --lang en --model large-v3-turbo
 ```
 
 Ventajas:
@@ -181,7 +181,8 @@ Ventajas:
 - no depende de OpenAI
 - no depende de UI scripting
 - es automatizable y más estable
-- modelo por defecto del proyecto: `whisper-large-v3-v20240930_turbo_632MB`
+- modelo por defecto del proyecto: `large-v3-turbo`
+- el script resuelve internamente `large-v3-turbo` a `whisper-large-v3-v20240930_turbo_632MB`, que es el identificador que entiende `whisperkit-cli`
 
 ### 6. `radar-os_atenea_ingestor`
 

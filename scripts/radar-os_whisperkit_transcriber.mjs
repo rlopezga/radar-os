@@ -19,7 +19,24 @@ import {
 } from "./lib/common.mjs";
 
 const execFileAsync = promisify(execFile);
-const DEFAULT_WHISPERKIT_MODEL = "whisper-large-v3-v20240930_turbo_632MB";
+const DEFAULT_WHISPERKIT_MODEL = "large-v3-turbo";
+const WHISPERKIT_TURBO_MODEL_ID = "whisper-large-v3-v20240930_turbo_632MB";
+
+function resolveWhisperKitModel(value) {
+  const requestedModel = String(value || DEFAULT_WHISPERKIT_MODEL).trim();
+
+  if (!requestedModel || requestedModel === DEFAULT_WHISPERKIT_MODEL) {
+    return {
+      requestedModel: DEFAULT_WHISPERKIT_MODEL,
+      resolvedModel: WHISPERKIT_TURBO_MODEL_ID
+    };
+  }
+
+  return {
+    requestedModel,
+    resolvedModel: requestedModel
+  };
+}
 
 function cleanTranscriptText(text) {
   return String(text || "")
@@ -185,7 +202,7 @@ export async function runWhisperKitTranscriber(cliArgs = process.argv.slice(2)) 
   const url = requireArg(args, "url", `Usage: --url <youtube-url> [--sphere personal|work] [--lang auto|en|es] [--model ${DEFAULT_WHISPERKIT_MODEL}]`);
   const sphere = normalizeSphere(args.sphere, "personal");
   const language = String(args.lang || "auto").trim().toLowerCase();
-  const model = String(args.model || DEFAULT_WHISPERKIT_MODEL).trim();
+  const { requestedModel, resolvedModel } = resolveWhisperKitModel(args.model || DEFAULT_WHISPERKIT_MODEL);
   const videoId = extractYouTubeVideoId(url);
   const canonicalUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const tempDir = path.join(ROOT_DIR, ".tmp", `whisperkit-${videoId}`);
@@ -201,7 +218,7 @@ export async function runWhisperKitTranscriber(cliArgs = process.argv.slice(2)) 
   await transcribeAudioWithWhisperKit({
     audioPath,
     reportPath,
-    model,
+    model: resolvedModel,
     language
   });
 
@@ -220,7 +237,8 @@ export async function runWhisperKitTranscriber(cliArgs = process.argv.slice(2)) 
     sphere,
     transcript_method: "whisperkit_local",
     transcript_language: language,
-    whisper_model: model,
+    whisper_model: requestedModel,
+    whisper_model_resolved: resolvedModel,
     requires_validation: "true",
     captured_at: new Date().toISOString(),
     origin_repo: "radar-os"
@@ -234,7 +252,8 @@ export async function runWhisperKitTranscriber(cliArgs = process.argv.slice(2)) 
 - Sphere: ${sphere}
 - Transcript method: whisperkit_local
 - Transcript language: ${language}
-- Whisper model: ${model}
+- Whisper model: ${requestedModel}
+- Whisper model resolved: ${resolvedModel}
 - Requires validation: true
 
 ## Transcript
@@ -251,7 +270,8 @@ ${renderTranscriptBody(transcriptEntries)}
     sphere,
     transcriptMethod: "whisperkit_local",
     transcriptLanguage: language,
-    model,
+    model: requestedModel,
+    resolvedModel,
     entryCount: transcriptEntries.length
   };
 }
