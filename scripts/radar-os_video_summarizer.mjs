@@ -20,7 +20,7 @@ import {
 } from "./lib/common.mjs";
 
 const execFileAsync = promisify(execFile);
-const DEFAULT_SUMMARY_MODEL = "qwen3.5:9b";
+const DEFAULT_SUMMARY_MODEL = "radar-os-qwen3.5-summary";
 const STOPWORDS = new Set([
   "a", "an", "and", "are", "as", "at", "be", "been", "but", "by", "for", "from",
   "had", "has", "have", "he", "her", "his", "i", "if", "in", "into", "is", "it",
@@ -266,13 +266,22 @@ async function canRunOllamaModel(model) {
 }
 
 async function requestSummaryFromOllama({ transcriptBody, context, title, sourceUrl, focus, sphere, model }) {
+  const transcriptEntries = parseTranscriptEntries(transcriptBody);
+  const frequencyMap = buildFrequencyMap(transcriptEntries);
+  const focusTokens = new Set(tokenize(focus));
+  const contextTokens = new Set(uniqueTokensFromContext(context));
+  const condensedEntries = pickTopEntries(
+    transcriptEntries,
+    10,
+    (entry) => scoreEntry(entry, frequencyMap, focusTokens, contextTokens)
+  );
+  const condensedTranscript = condensedEntries
+    .map((entry) => `[${entry.timestamp}] ${entry.text}`)
+    .join("\n");
   const prompt = [
     "Eres radar-os_video_summarizer.",
-    "Trabajas dentro de radar-os, una capa de entrada y observacion, no memoria final.",
-    "Debes responder en markdown en español.",
-    "Separa hechos, interpretacion, relevancia y claims a validar.",
-    "No inventes objetivos ni preferencias fuera del contexto suministrado.",
-    "Si algo no esta claro, dilo como hipotesis o pendiente de validar.",
+    "Resume en markdown y en español.",
+    "No inventes hechos ni objetivos fuera del contexto dado.",
     "Usa exactamente estas secciones:",
     "## Resumen fiel",
     "## Ideas clave",
@@ -289,8 +298,10 @@ async function requestSummaryFromOllama({ transcriptBody, context, title, source
     "Contexto relevante de Atenea:",
     JSON.stringify(context, null, 2),
     "",
-    "Transcripcion:",
-    transcriptBody
+    "Fragmentos relevantes del transcript:",
+    condensedTranscript,
+    "",
+    "/nothink"
   ].join("\n");
 
   const { stdout } = await execFileAsync("ollama", [

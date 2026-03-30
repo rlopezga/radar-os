@@ -161,6 +161,28 @@ async function updateTranscriptRecord(transcriptPath, fields = {}) {
   ]);
 }
 
+function classifyAteneaProposalError(error) {
+  const message = String(error?.message || "").trim();
+
+  if (
+    /fetch failed/i.test(message)
+    || /network/i.test(message)
+    || /ECONN/i.test(message)
+    || /ENOTFOUND/i.test(message)
+    || /timed out/i.test(message)
+  ) {
+    return {
+      status: "pending_retry",
+      message
+    };
+  }
+
+  return {
+    status: "failed",
+    message
+  };
+}
+
 export async function persistTranscriptToRadarDb(transcriptPath) {
   const absolutePath = path.resolve(transcriptPath);
   const markdown = await fs.readFile(absolutePath, "utf8");
@@ -364,13 +386,15 @@ export async function runTranscriptPostprocess({
         atenea_proposal_reported_at: new Date().toISOString()
       });
     } catch (error) {
+      const classifiedError = classifyAteneaProposalError(error);
+
       result.ateneaProposal = {
-        status: "failed",
-        error: error.message
+        status: classifiedError.status,
+        error: classifiedError.message
       };
 
       await updateTranscriptRecord(transcriptPath, {
-        atenea_proposal_status: "failed",
+        atenea_proposal_status: classifiedError.status,
         atenea_proposal_input_path: summaryOutputPath ? path.relative(ROOT_DIR, summaryOutputPath) : "",
         atenea_proposal_reported_at: ""
       });

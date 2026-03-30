@@ -120,7 +120,9 @@ Requisitos:
 
 Notas:
 
-- usa `ollama` con `qwen3.5:9b` cuando está disponible localmente
+- usa `ollama` con el alias local `radar-os-qwen3.5-summary`
+- ese alias se construye desde `qwen3.5:9b` con `num_ctx 8192`
+- el prompt termina en `/nothink` para pedir respuesta directa sin razonamiento paso a paso
 - si el modelo local no está disponible, usa un método local determinista y extractivo como fallback
 - el resultado sigue siendo interpretativo y requiere validación humana
 
@@ -183,6 +185,7 @@ Reprocesa transcripciones ya existentes para aplicar el flujo actual:
 - generar propuesta en `proposals/`
 - enviar la propuesta a `atenea` para review si corresponde
 - saltar automaticamente las transcripciones que ya tengan resumen y ya hayan sido reportadas a `atenea`
+- si falla la red hacia `atenea`, dejar el estado como pendiente de reintento en la BD local
 
 Ejemplos:
 
